@@ -1,3 +1,5 @@
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO flaskuser;
+
 DROP TABLE Division CASCADE;
 DROP TABLE Department CASCADE;
 DROP TABLE Employee CASCADE;
@@ -8,6 +10,7 @@ DROP TABLE Building CASCADE;
 DROP TABLE Office CASCADE;
 DROP TABLE Phone CASCADE;
 DROP TABLE Records CASCADE;
+DROP TABLE Credentials CASCADE;
 
 CREATE TABLE Division(
 	divisionId int NOT NULL,
@@ -128,6 +131,13 @@ CREATE TABLE Salary(
 	CONSTRAINT fk_records_of_emloyee FOREIGN KEY (empId) REFERENCES Employee(employeeNum)
 );
 
+CREATE TABLE Credentials(
+	employee int NOT NULL,
+	password varchar(255),
+	CONSTRAINT fk_records_of_emloyee FOREIGN KEY (employee) REFERENCES Employee(employeeNum)
+
+);
+
 INSERT INTO  Building VALUES (01, 'A' , 2017, 1020000);
 INSERT INTO  Building VALUES (02, 'B' , 2015, 500000);
 INSERT INTO  Building VALUES (03, 'C' , 2000, 150000);
@@ -188,11 +198,11 @@ INSERT INTO  Employee VALUES (15, 'Aiden Lee', 127, 'Senior Engineer 2', 05, 689
 INSERT INTO  Employee VALUES (16, 'Evan Scott', 126, 'Associate 2', 01, 7584693,null , null, 'Human Resources', null, 123);
 INSERT INTO  Employee VALUES (17, 'Josh Phill', 125, 'IT Analyst 2', 02, 2568974,null ,null, 'Training', null, 124);
 INSERT INTO  Employee VALUES (18, 'John Diaz', 127, 'Developer 2', 04, 3568975,null ,null, 'Onboarding', null, 125);
-INSERT INTO  Employee VALUES (19, 'Josh Diaz', 126, 'IT Analyst 2', 03, 1387423,null ,null, 'Human Resources', null, 125);
-INSERT INTO  Employee VALUES (20, 'Kim P', 124, 'IT Analyst 2', 05, 0309278,null ,null, 'Human Resources', null, 123);
+INSERT INTO  Employee VALUES (19, 'Josh Diaz', 126, 'IT Analyst 2', 03, 1387423,null ,null, 'Administration', null, 125);
+INSERT INTO  Employee VALUES (20, 'Kim P', 124, 'IT Analyst 2', 05, 0309278,null ,null, 'Administration', null, 123);
 INSERT INTO  Employee VALUES (21, 'Herry James', 123, 'Associate 2', 01, 2389421,001 ,null, null, null, 124);
 INSERT INTO  Employee VALUES (22, 'Josh Ross', 125, 'Developer 2', 02, 4743231,null ,null, 'Onboarding', null, 126);
-INSERT INTO  Employee VALUES (23, 'Rachel H', 126, 'Senior Engineer 2', 03, 5637431,null ,null, 'Human Resources', null, 125);
+INSERT INTO  Employee VALUES (23, 'Rachel H', 126, 'Senior Engineer 2', 03, 5637431,null ,null, 'Administration', null, 125);
 INSERT INTO  Employee VALUES (24, 'Bell Ford', 127, 'Head Operations 2', 04, 6894121,002 ,null, null, null, 127);
 INSERT INTO  Employee VALUES (25, 'Berry Math', 124, 'Developer 2', 05, 7432156,null ,null, 'Training', null, 124);
 
@@ -243,4 +253,4 @@ INSERT INTO  Salary VALUES (23, 29, 48000);
 INSERT INTO  Salary VALUES (24, 28, 42000);
 INSERT INTO  Salary VALUES (25, 27, 39000);
 
-
+INSERT INTO Credentials VALUES(16, 'password')
