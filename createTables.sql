@@ -120,3 +120,127 @@ CREATE TABLE Records(
 	CONSTRAINT fk_records_of_emloyee FOREIGN KEY (eID) REFERENCES Employee(employeeNum)
 );
 
+CREATE TABLE Salary(
+	empId int NOT NULL,
+	Hourly varchar(255),
+	Salary varchar(255),
+	PRIMARY KEY(empId),
+	CONSTRAINT fk_records_of_emloyee FOREIGN KEY (empId) REFERENCES Employee(employeeNum)
+);
+
+INSERT INTO  Building VALUES (01, 'A' , 2017, 1020000);
+INSERT INTO  Building VALUES (02, 'B' , 2015, 500000);
+INSERT INTO  Building VALUES (03, 'C' , 2000, 150000);
+INSERT INTO  Building VALUES (04, 'D' , 2010, 300000);
+INSERT INTO  Building VALUES (05, 'E' , 2005, 200000);
+
+INSERT INTO  Division VALUES (001, 'A');
+INSERT INTO  Division VALUES (002, 'B');
+INSERT INTO  Division VALUES (003, 'C' );
+INSERT INTO  Division VALUES (004, 'D');
+INSERT INTO  Division VALUES (005, 'E' );
+
+INSERT INTO  Department VALUES ('Administration', 5000000,  001);
+INSERT INTO  Department VALUES ('Human Resources', 4000000, 002);
+INSERT INTO  Department VALUES ('Training', 2000000, 003);
+INSERT INTO  Department VALUES ('Onboarding', 1000000, 004);
+INSERT INTO  Department VALUES ('Disciplinary', 7000000, 005);
+
+INSERT INTO  Office VALUES (01, 1200);
+INSERT INTO  Office VALUES (02, 1500);
+INSERT INTO  Office VALUES (03, 1000);
+INSERT INTO  Office VALUES (04, 1300);
+INSERT INTO  Office VALUES (05, 1400);
+
+INSERT INTO  Phone VALUES (7584693, 01);
+INSERT INTO  Phone VALUES (5897451, 02);
+INSERT INTO  Phone VALUES (9687553, 03);
+INSERT INTO  Phone VALUES (8975641, 04);
+INSERT INTO  Phone VALUES (4568792, 05);
+INSERT INTO  Phone VALUES (6895476, 01);
+INSERT INTO  Phone VALUES (2568974, 02);
+INSERT INTO  Phone VALUES (3568975, 04);
+INSERT INTO  Phone VALUES (1387423, 03);
+INSERT INTO  Phone VALUES (0309278, 05);
+INSERT INTO  Phone VALUES (2389421, 01);
+INSERT INTO  Phone VALUES (4743231, 02);
+INSERT INTO  Phone VALUES (5637431, 03);
+INSERT INTO  Phone VALUES (6894121, 04);
+INSERT INTO  Phone VALUES (7432156, 05);
+
+INSERT INTO  Rooms VALUES (1, 12,  'Administration', 01, 01);
+INSERT INTO  Rooms VALUES (2, 23, 'Human Resources', 02, 02);
+INSERT INTO  Rooms VALUES (3, 32, 'Training', 03, 03);
+INSERT INTO  Rooms VALUES (4, 24 , 'Onboarding', 04, 04);
+INSERT INTO  Rooms VALUES (5, 56 , 'Disciplinary', 05, 05);
+
+INSERT INTO  Project VALUES (123, 100000, '2022-04-27' , '2023-04-28', 'Administration', null);
+INSERT INTO  Project VALUES (124, 200000, '2022-04-17' , '2023-04-18', 'Human Resources', null);
+INSERT INTO  Project VALUES (125, 300000, '2022-04-07' , '2023-04-08', 'Training', null);
+INSERT INTO  Project VALUES (126, 400000, '2022-03-27' , '2023-03-28', 'Onboarding', null);
+INSERT INTO  Project VALUES (127, 90000, '2022-03-17' , '2023-03-18', 'Disciplinary', null);
+
+INSERT INTO  Employee VALUES (11, 'John Smith', 123, 'IT Analyst 2', 01 , 8975641, 001, 001, null ,null ,123);
+INSERT INTO  Employee VALUES (12, 'Stew Williams', 124, 'Devloper 2', 02, 5897451, 002, null, null,null ,124);
+INSERT INTO  Employee VALUES (13, 'Ivan P', 125, 'Head Operations 2', 03, 9687553, 003, null, null,null ,125);
+INSERT INTO  Employee VALUES (14, 'Noah Taylor', 126, 'Associate 2', 04, 3568975, 004, null, null, null,126);
+INSERT INTO  Employee VALUES (15, 'Aiden Lee', 127, 'Senior Engineer 2', 05, 6895476,null ,null ,'Administration','Disciplinary',127);
+INSERT INTO  Employee VALUES (16, 'Evan Scott', 126, 'Associate 2', 01, 7584693,null , null, 'Human Resources', null, 123);
+INSERT INTO  Employee VALUES (17, 'Josh Phill', 125, 'IT Analyst 2', 02, 2568974,null ,null, 'Training', null, 124);
+INSERT INTO  Employee VALUES (18, 'John Diaz', 127, 'Developer 2', 04, 3568975,null ,null, 'Onboarding', null, 125);
+INSERT INTO  Employee VALUES (19, 'Josh Diaz', 126, 'IT Analyst 2', 03, 1387423,null ,null, 'Human Resources', null, 125);
+INSERT INTO  Employee VALUES (20, 'Kim P', 124, 'IT Analyst 2', 05, 0309278,null ,null, 'Human Resources', null, 123);
+INSERT INTO  Employee VALUES (21, 'Herry James', 123, 'Associate 2', 01, 2389421,001 ,null, null, null, 124);
+INSERT INTO  Employee VALUES (22, 'Josh Ross', 125, 'Developer 2', 02, 4743231,null ,null, 'Onboarding', null, 126);
+INSERT INTO  Employee VALUES (23, 'Rachel H', 126, 'Senior Engineer 2', 03, 5637431,null ,null, 'Human Resources', null, 125);
+INSERT INTO  Employee VALUES (24, 'Bell Ford', 127, 'Head Operations 2', 04, 6894121,002 ,null, null, null, 127);
+INSERT INTO  Employee VALUES (25, 'Berry Math', 124, 'Developer 2', 05, 7432156,null ,null, 'Training', null, 124);
+
+
+UPDATE Project SET manager = 11 WHERE projectnum = 123;
+UPDATE Project SET manager = 12 WHERE projectnum = 124;
+UPDATE Project SET manager = 13 WHERE projectnum = 125;
+UPDATE Project SET manager = 14 WHERE projectnum = 126;
+UPDATE Project SET manager = 15 WHERE projectnum = 127;
+
+INSERT INTO  Project_Hist VALUES (11, 15 , 'Evalution' , 11, 123);
+INSERT INTO  Project_Hist VALUES (12, 20 , 'Trainer' , 12, 124);
+INSERT INTO  Project_Hist VALUES (13, 45, 'Senior' , 16, 124);
+INSERT INTO  Project_Hist VALUES (14, 25, 'Trainer' , 13, 125);
+INSERT INTO  Project_Hist VALUES (15, 90, 'Human Resources' , 14, 126);
+
+
+INSERT INTO  Records VALUES (11, 'IT Analyst', '2018-06-11', 60000);
+INSERT INTO  Records VALUES (12, 'Devloper', '2019-04-15', 65000);
+INSERT INTO  Records VALUES (13, 'Head Operations', '2015-04-19', 80000);
+INSERT INTO  Records VALUES (14, 'Associate', '2021-04-15', 40000);
+INSERT INTO  Records VALUES (15, 'Senior Engineer', '2019-06-11', 50000);
+INSERT INTO  Records VALUES (16, 'Associate', '2020-04-15', 45000);
+INSERT INTO  Records VALUES (17, 'IT Analyst', '2015-04-19', 70000);
+INSERT INTO  Records VALUES (18, 'Developer', '2015-04-15', 75000);
+INSERT INTO  Records VALUES (19, 'IT Analyst', '2015-04-15', 75000);
+INSERT INTO  Records VALUES (20, 'IT Analyst', '2015-07-15', 85000);
+INSERT INTO  Records VALUES (21, 'Associate', '2012-04-09', 95000);
+INSERT INTO  Records VALUES (22, 'Developer', '2017-04-15', 55000);
+INSERT INTO  Records VALUES (23, 'Senior Engineer', '2015-04-15', 75000);
+INSERT INTO  Records VALUES (24, 'Head Operations', '2015-07-30', 60000);
+INSERT INTO  Records VALUES (25, 'Developer', '2015-04-15', 75000);
+
+
+INSERT INTO  Salary VALUES (11, 25, null);
+INSERT INTO  Salary VALUES (12, 30, 35000);
+INSERT INTO  Salary VALUES (13, 28, 45000);
+INSERT INTO  Salary VALUES (14, 27, 39000);
+INSERT INTO  Salary VALUES (15, 26, 35000);
+INSERT INTO  Salary VALUES (16, 25 , 33000);
+INSERT INTO  Salary VALUES (17, 30, null);
+INSERT INTO  Salary VALUES (18, 35, 60000);
+INSERT INTO  Salary VALUES (19, 23, null);
+INSERT INTO  Salary VALUES (20, 24, null);
+INSERT INTO  Salary VALUES (21, 25, 33000);
+INSERT INTO  Salary VALUES (22, 29, 48000);
+INSERT INTO  Salary VALUES (23, 29, 48000);
+INSERT INTO  Salary VALUES (24, 28, 42000);
+INSERT INTO  Salary VALUES (25, 27, 39000);
+
+
