@@ -254,3 +254,17 @@ INSERT INTO  Salary VALUES (24, 28, 42000);
 INSERT INTO  Salary VALUES (25, 27, 39000);
 
 INSERT INTO Credentials VALUES(16, 'password')
+
+
+CREATE TABLE Credentials_two(
+	employee int NOT NULL,
+	password varchar(255),
+	CONSTRAINT fk_records_of_emloyee FOREIGN KEY (employee) REFERENCES Employee(employeeNum)
+
+);
+
+INSERT INTO Credentials_two VALUES(11, 'password');
+INSERT INTO Credentials_two VALUES(12, 'password');
+INSERT INTO Credentials_two VALUES(13, 'password');
+INSERT INTO Credentials_two VALUES(14, 'password');
+INSERT INTO Credentials_two VALUES(15, 'password');
