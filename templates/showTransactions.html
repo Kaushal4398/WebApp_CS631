@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Welcome {{name}}</title>
-    <h4 style="text-align: center; color: coral; padding: 35px; font-size: 60px; font-family: 'Courier New'; font-weight: bolder">Welcome</h4>
+    <title>Pass Transactions</title>
+    <h4 style="text-align: center; color: coral; padding: 35px; font-size: 60px; font-family: 'Courier New'; font-weight: bolder">Payroll Transactions</h4>
     <form action= "/logout">
     <button class="btn btn-sml btn-primary" type="submit" style="background-color: #ff3b00; border-color: #ff3b00">Logout</button>
     </form>
     <form action= "/showTrans">
-    <button class="btn btn-sml btn-primary" type="submit" style="background-color: #ff3b00; border-color: #ff3b00">Show Employee Payroll Transactions</button>
+    <button class="btn btn-sml btn-primary" type="submit" style="background-color: #ff3b00; border-color: #ff3b00">Process Employee Payroll Transactions</button>
     </form>
 </head>
 <style>
@@ -29,7 +29,7 @@
 }
 .column {
   float: left;
-  width: 25%;
+  width: 50%;
   padding: 10px 10px;
 }
 
@@ -61,61 +61,34 @@ body {
 
 <body class="bg-info" style="align-content: center; margin: 40px; font-family: 'Times New Roman'">
         <div class="container" align="center" style="margin-bottom: 70px">
-        <div class="card" style="width: 25rem;">
+        <div class="card" style="width: 200rem;">
           <div class="card-body">
-            <h3 class="card-title">Your Profile</h3>
-            <p class="card-text"> Employee ID: {{ID}} </p>
-            <p class="card-text"> Name: {{name}} </p>
-            <p class="card-text"> Job Title: {{jobTitle}} </p>
-            <p class="card-text"> Office Number: {{officenum}} </p>
-            <p class="card-text"> Phone Number: {{phoneNum}} </p>
-          </div>
-        </div>
-        </div> 
-
-        <div class="container" align="center" style="margin-bottom: 70px">
-        <div class="card" style="width: 25rem;">
-          <div class="card-body">
-            <h3 class="card-title">Hourly Employees</h3>
-            <table>
+            <h3 class="card-title">All Transactions</h3>
+            <table >
                 <tbody>
                   <tr>
-                    <th>Hourly Wage</th>
-                    <th>Employee ID</th> 
-                    <th>Employee Name</th>
+                    <th>Employee ID</th>
+                    <th>Date</th> 
+                    <th>Paycheck amount</th>
+                    <th>Federal Tax (10 percent)</th>
+                    <th>State Tax (5 percent)</th>
+                    <th>Other Taxes (3 percent)</th>
+                    <th>Take Home</th>
                   </tr>    
-                {% for item in hourly %}
+                {% for item in trans %}
                 <tr>
                     <td>{{item[0]}}</td>
                     <td>{{item[1]}}</td>
                     <td>{{item[2]}}</td>
+                    <td>{{item[3]}}</td>
+                    <td>{{item[4]}}</td>
+                    <td>{{item[5]}}</td>
+                    <td>{{item[6]}}</td>
+
+
                 </tr>
                 {% endfor %}
-                </tbody>
-            </table>
 
-          </div>
-        </div> 
-        </div> 
-
-        <div class="container" align="center" style="margin-bottom: 70px">
-        <div class="card" style="width: 25rem;">
-          <div class="card-body">
-            <h3 class="card-title">Salary Employees</h3>
-            <table>
-                <tbody>
-                  <tr>
-                    <th>Salary</th>
-                    <th>Employee ID</th> 
-                    <th>Employee Name</th>
-                  </tr>    
-                {% for item in salary %}
-                <tr>
-                    <td>{{item[0]}}</td>
-                    <td>{{item[1]}}</td>
-                    <td>{{item[2]}}</td>
-                </tr>
-                {% endfor %}
                 </tbody>
             </table>
 
@@ -134,4 +107,3 @@ body {
         crossorigin="anonymous"></script>
 </body>
 </html>
-

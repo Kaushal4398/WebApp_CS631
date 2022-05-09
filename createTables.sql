@@ -238,20 +238,20 @@ INSERT INTO  Records VALUES (25, 'Developer', '2015-04-15', 75000);
 
 
 INSERT INTO  Salary VALUES (11, 25, null);
-INSERT INTO  Salary VALUES (12, 30, 35000);
-INSERT INTO  Salary VALUES (13, 28, 45000);
-INSERT INTO  Salary VALUES (14, 27, 39000);
-INSERT INTO  Salary VALUES (15, 26, 35000);
-INSERT INTO  Salary VALUES (16, 25 , 33000);
+INSERT INTO  Salary VALUES (12, null, 35000);
+INSERT INTO  Salary VALUES (13, null, 45000);
+INSERT INTO  Salary VALUES (14, null, 39000);
+INSERT INTO  Salary VALUES (15, null, 35000);
+INSERT INTO  Salary VALUES (16, null, 33000);
 INSERT INTO  Salary VALUES (17, 30, null);
-INSERT INTO  Salary VALUES (18, 35, 60000);
+INSERT INTO  Salary VALUES (18, null, 60000);
 INSERT INTO  Salary VALUES (19, 23, null);
 INSERT INTO  Salary VALUES (20, 24, null);
-INSERT INTO  Salary VALUES (21, 25, 33000);
-INSERT INTO  Salary VALUES (22, 29, 48000);
-INSERT INTO  Salary VALUES (23, 29, 48000);
-INSERT INTO  Salary VALUES (24, 28, 42000);
-INSERT INTO  Salary VALUES (25, 27, 39000);
+INSERT INTO  Salary VALUES (21, null, 33000);
+INSERT INTO  Salary VALUES (22, null, 48000);
+INSERT INTO  Salary VALUES (23, null, 48000);
+INSERT INTO  Salary VALUES (24, null, 42000);
+INSERT INTO  Salary VALUES (25, null, 39000);
 
 INSERT INTO Credentials VALUES(16, 'password')
 
@@ -259,7 +259,13 @@ INSERT INTO Credentials VALUES(16, 'password')
 CREATE TABLE Credentials_two(
 	employee int NOT NULL,
 	password varchar(255),
+	CREATE TABLE Credentials_two(
+	employee int NOT NULL,
+	password varchar(255),
 	CONSTRAINT fk_records_of_emloyee FOREIGN KEY (employee) REFERENCES Employee(employeeNum)
+
+);
+
 
 );
 
@@ -268,3 +274,26 @@ INSERT INTO Credentials_two VALUES(12, 'password');
 INSERT INTO Credentials_two VALUES(13, 'password');
 INSERT INTO Credentials_two VALUES(14, 'password');
 INSERT INTO Credentials_two VALUES(15, 'password');
+
+CREATE TABLE transactions(
+	employee int NOT NULL, 
+	transDate date, 
+	paycheck int,
+	CONSTRAINT fk_records_of_emloyee FOREIGN KEY (employee) REFERENCES Employee(employeeNum)
+);
+
+INSERT INTO transactions VALUES (11, '2022-05-01', 2000);
+INSERT INTO transactions VALUES (12, '2022-05-01', 1458);
+INSERT INTO transactions VALUES (13, '2022-05-01', 1875);
+INSERT INTO transactions VALUES (14, '2022-05-01', 1625);
+INSERT INTO transactions VALUES (15, '2022-05-01', 1458);
+INSERT INTO transactions VALUES (16, '2022-05-01', 1375);
+INSERT INTO transactions VALUES (17, '2022-05-01', 2400);
+INSERT INTO transactions VALUES (18, '2022-05-01', 2500);
+INSERT INTO transactions VALUES (19, '2022-05-01', 1840);
+INSERT INTO transactions VALUES (20, '2022-05-01', 1920);
+INSERT INTO transactions VALUES (21, '2022-05-01', 1375);
+INSERT INTO transactions VALUES (22, '2022-05-01', 2000);
+INSERT INTO transactions VALUES (23, '2022-05-01', 2000);
+INSERT INTO transactions VALUES (24, '2022-05-01', 1750);
+INSERT INTO transactions VALUES (25, '2022-05-01', 1625);
