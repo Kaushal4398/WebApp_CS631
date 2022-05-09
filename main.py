@@ -110,6 +110,8 @@ def showTransactions():
 @app.route('/checkloginMang', methods=['POST', 'GET'])
 def loginMang():
     text = "Credentials doesn't match"
+    displayContent = []
+
 
     if request.method == 'POST':
         employeeId = request.form['inputEmployeeID']
@@ -125,7 +127,47 @@ def loginMang():
             # if a user enters wrong password return it to the login page
             return render_template('projLogin.html', text=text)
         else:
-            return render_template('WelcomeManag.html')
+            cursor = conn.cursor()
+            stat = "SELECT * FROM employee WHERE employeenum = %s"
+            values = [employeeId]
+            cursor.execute(stat, tuple(values))
+            data = cursor.fetchone()
+            for i in range(len(data)):
+                displayContent.append(data[i])
+
+            return render_template('WelcomeManag.html', ID=displayContent[0], name=displayContent[1],
+                                   jobTitle=displayContent[3], officenum=displayContent[4], phoneNum=displayContent[5])
+
+@app.route('/createProject', methods=['POST', 'GET'])
+def createProjectPage():
+    cursor = conn.cursor()
+    stat = "SELECT depname from department"
+    cursor.execute(stat)
+    departments = cursor.fetchall()
+    displaytupledep = []
+    projectmembs = []
+
+    for i in range(len(departments)):
+        displaytupledep.append(departments[i][0])
+
+    stat = "SELECT ename from employee where employeenum NOT IN (SELECT manager from project);"
+    cursor.execute(stat)
+    managers = cursor.fetchall()
+    displaytupleman = []
+    for i in range(len(managers)):
+        displaytupleman.append(managers[i][0])
+
+    stat = "SELECT ename from employee where projectnum IS NULL;"
+    cursor.execute(stat)
+    data = cursor.fetchall()
+    for i in range(len(data)):
+        projectmembs.append(data[i][0])
+
+    print(displaytupledep)
+    print(projectmembs)
+
+    return render_template('createproj.html', dispDepart=tuple(displaytupledep), dispMang=tuple(displaytupleman)
+                           , dispMembs=tuple(projectmembs))
 
 # Press the green button in the gutter to run the script.
 
