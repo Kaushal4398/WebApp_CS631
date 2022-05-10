@@ -169,6 +169,31 @@ def createProjectPage():
     return render_template('createproj.html', dispDepart=tuple(displaytupledep), dispMang=tuple(displaytupleman)
                            , dispMembs=tuple(projectmembs))
 
+@app.route('/viewMilestones', methods=['POST', 'GET'])
+def viewMileStones():
+    cursor = conn.cursor()
+    stat = "select * from milestones order by projectnum;"
+    cursor.execute(stat)
+    milestones = cursor.fetchall()
+
+
+    print(milestones)
+    return render_template('viewMileStones.html', dispmilestone = milestones)
+
+@app.route('/viewStats', methods=['POST', 'GET'])
+def viewStatistics():
+    cursor = conn.cursor()
+    stat = "select COUNT(*), projectnum from employee where projectnum IS NOT NULL group by projectnum;"
+    cursor.execute(stat)
+    emps = cursor.fetchall()
+
+    stat = "select ROUND(AVG(projbudget),2) from project;"
+    cursor.execute(stat)
+    avg = cursor.fetchall()
+
+
+    return render_template('viewStatistics.html', dispEmps=emps, dispAvg=avg)
+
 # Press the green button in the gutter to run the script.
 
 

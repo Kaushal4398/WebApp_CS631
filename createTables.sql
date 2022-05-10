@@ -266,9 +266,6 @@ CREATE TABLE Credentials_two(
 
 );
 
-
-);
-
 INSERT INTO Credentials_two VALUES(11, 'password');
 INSERT INTO Credentials_two VALUES(12, 'password');
 INSERT INTO Credentials_two VALUES(13, 'password');
@@ -297,3 +294,19 @@ INSERT INTO transactions VALUES (22, '2022-05-01', 2000);
 INSERT INTO transactions VALUES (23, '2022-05-01', 2000);
 INSERT INTO transactions VALUES (24, '2022-05-01', 1750);
 INSERT INTO transactions VALUES (25, '2022-05-01', 1625);
+
+CREATE TABLE milestones(
+	mileID int NOT NULL, 
+	projectnum int,
+	milestonetext varchar(1000),
+	mileStatus varchar(255),
+	CONSTRAINT fk_records_of_emloyee FOREIGN KEY (projectnum) REFERENCES project(projectnum)
+);
+
+INSERT INTO milestones VALUES(1, 123, 'Working on setting up', 'In progress');
+INSERT INTO milestones VALUES(2, 124, 'Working on setting up', 'Not started');
+INSERT INTO milestones VALUES(3, 124, 'Code Analysis', 'Not started');
+INSERT INTO milestones VALUES(4, 126, 'Critical thinking features', 'Completed');
+INSERT INTO milestones VALUES(5, 125, 'Implementating features', 'In progress');
+INSERT INTO milestones VALUES(6, 125, 'Bug fix', 'In progress');
+INSERT INTO milestones VALUES(7, 125, 'Implementating features', 'In progress'); 
